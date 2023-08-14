@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.Views.CommunityTools"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" >
+
+    <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="InvalidStyle"     TargetType="Entry">
+
+                    <Setter Property="TextColor" Value="Red"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Fade Animation">
+                <Button.Behaviors>
+                    <xct:AnimationBehavior EventName="Clicked">
+                        <xct:AnimationBehavior.AnimationType>
+                            <xct:FadeAnimation
+                    Easing="{x:Static Easing.Linear}"
+                    Duration="100"
+                />
+                        </xct:AnimationBehavior.AnimationType>
+                    </xct:AnimationBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Entry>
+                <Entry.Behaviors>
+                    <xct:CharactersValidationBehavior
+            InvalidStyle="{StaticResource InvalidStyle}"
+            CharacterType="Alphanumeric"
+            MaximumCharacterCount="10"
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry Placeholder="Email">
+                <Entry.Behaviors>
+                    <xct:EmailValidationBehavior
+            DecorationFlags="Trim"
+            InvalidStyle="{StaticResource InvalidStyle}"
+        />
+                </Entry.Behaviors>
+            </Entry>
+            <Button Text="click me">
+                <Button.Behaviors>
+                    <xct:EventToCommandBehavior
+        EventName="Clicked"
+        Command="{Binding MyCustomCommand}" />
+                </Button.Behaviors>
+            </Button>
+
+            <Entry 
+    Placeholder="Start typing until MaxLength is reached..."
+    MaxLength="10">
+                <Entry.Behaviors>
+                    <xct:MaxLengthReachedBehavior         
+             MaxLengthReached="MaxLengthReachedBehavior_MaxLengthReached"
+            ShouldDismissKeyboardAutomatically="True" 
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry 
+    Placeholder="Start typing until MaxLength is reached..."
+    MaxLength="10">
+                <Entry.Behaviors>
+                    <xct:MaxLengthReachedBehavior 
+            Command="{Binding MaxLengthReachedCommand}"
+            ShouldDismissKeyboardAutomatically="False" 
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry>
+                <Entry.Behaviors>
+                    <xct:RequiredStringValidationBehavior
+            InvalidStyle="{StaticResource InvalidStyle}"
+            RequiredString="OK"
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry>
+                <Entry.Behaviors>
+                    <xct:MaskedBehavior 
+            Mask="AA-AA-AA" 
+            UnMaskedCharacter="A"
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry>
+                <Entry.Behaviors>
+                    <xct:NumericValidationBehavior
+            InvalidStyle="{StaticResource InvalidStyle}"
+            MinimumValue="1.0"
+            MaximumValue="100.0"
+            MaximumDecimalPlaces="2"
+        />
+                </Entry.Behaviors>
+            </Entry>
+
+
+            <Entry>
+                <Entry.Behaviors>
+                    <xct:MultiValidationBehavior
+            x:Name="MultiValidation"
+            InvalidStyle="{StaticResource InvalidStyle}">
+
+                        <xct:NumericValidationBehavior
+                xct:MultiValidationBehavior.Error="NaN"
+            />
+                        <xct:NumericValidationBehavior
+                MinimumValue="-10"
+                xct:MultiValidationBehavior.Error="Min: -10"
+            />
+                        <xct:NumericValidationBehavior
+                MaximumValue="5"
+                xct:MultiValidationBehavior.Error="Max: 5"
+            />
+                    </xct:MultiValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+            <StackLayout>
+              
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="Accept"
+                                        
+                          Margin="5"
+                BackgroundColor="ForestGreen"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button Text="Reject"
+                     
+                         BackgroundColor="Red"
+            
+                        Margin="5"
+                        />
+                </StackLayout>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

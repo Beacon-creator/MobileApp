@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.LandingPage">
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Frame BackgroundColor="Blue" Padding="104" CornerRadius="0" VerticalOptions="Center">
+                <Image Source="bgpic.png"/>
+            </Frame>
+            <Label Text="Let's you in" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <StackLayout>
+                <ImageButton Source=""/>
+            </StackLayout>
+            <Button Text="COntinue with Facebook"
+                    Padding="20,20,20,20" BackgroundColor="White" 
+                    BorderWidth="5" 
+                    CornerRadius="30"   Clicked="Login_Clicked"/>
+            
+            <Button Text="Sign up" Padding="20,20,20,20" 
+                    BackgroundColor="Transparent" BorderWidth="5" 
+                    CornerRadius="30" Clicked="Signup_Clicked"/>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

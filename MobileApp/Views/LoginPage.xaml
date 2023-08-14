@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.Views.LoginPage"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MobileApp.EventHandlers" 
+             xmlns:local1="clr-namespace:MobileApp.ViewsModels"
+             xmlns:local2="clr-namespace:MobileApp.MyControls">
+    
+    <ContentPage.BindingContext>
+        
+        <local1:LoginPageViewModel/>
+        
+    </ContentPage.BindingContext>
+
+    <StackLayout BackgroundColor="LightGray" >
+
+        <Label Text="Join Us" 
+                   x:Name="Signup" Style="{DynamicResource SigninupLabel}"  >
+            
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_JoinUs"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Text="Login" FontSize="15" FontAttributes="Bold" 
+               HorizontalOptions="Center" Padding="0,20,0,20"/>
+
+            <Image Source="logopic.png" HeightRequest="50" 
+                   WidthRequest="100" HorizontalOptions="Center" />
+        
+            <Label Text="Mobile login, Trending!" 
+                   TextColor="ForestGreen" FontFamily="San-Serif" 
+                   HorizontalOptions="Center" Padding="0,0,0,20"/>
+
+        
+        <local2:MyRoundedEntry  HeightRequest="70"
+                                HorizontalTextAlignment="Start"
+                                Placeholder="Username"  Margin ="30,0,30,10" 
+                                x:Name="EntryUsername"  HorizontalOptions="Fill" />
+
+        <Grid>
+            <local2:MyRoundedEntry HeightRequest="70"
+                                HorizontalTextAlignment="Start"
+                                Placeholder="Password"   Margin ="30,0,30,0" 
+                                x:Name="EntryPassword"  HorizontalOptions="Fill"
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}">
+
+            </local2:MyRoundedEntry>
+            <ImageButton VerticalOptions="Center"
+                      Margin="0,0,50,0" Grid.Column="0"
+                     HeightRequest="20"
+                     HorizontalOptions="End"
+                     Source="ic_eye_hide">
+
+                <ImageButton.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <local:ShowPasswordTriggerActions ShowIcon="ic_eye"
+                                                          HideIcon="ic_eye_hide"
+                                                          x:Name="ShowPasswordActualTrigger"/>
+                    </EventTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+
+        </Grid>
+    
+    
+        <Label Text="Forgot password?" TextColor="Red" 
+               HorizontalOptions="End" Margin="0,0,30,0" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_ForgotPassword"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Button Text="Login"  Style="{DynamicResource entranceButton}"
+                Clicked="LoginButton_Clicked"/>
+
+
+    </StackLayout>
+
+
+</ContentPage>

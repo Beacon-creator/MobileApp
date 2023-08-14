@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.MyStyles.MainappStyles">
+
+
+<!--Labels-->
+    <Style x:Key="headlabel" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="Margin" Value="0,50,0,0"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+      
+    </Style>
+
+
+    <Style x:Key="headlabel2" TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="Subtitle"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+
+    </Style>
+
+    <Style x:Key="SigninupLabel" TargetType="Label">
+        <Setter Property="FontSize"
+                            Value="17" />
+        <Setter Property="FontAttributes"
+                            Value="Bold" />
+        <Setter Property="HorizontalOptions"
+                            Value="End" />
+        <Setter Property="Margin"
+                            Value="0,5,15,0" />
+    </Style>
+
+    <Style x:Key="Titlelabel" TargetType="Label">
+        <Setter Property="FontSize"
+                            Value="15" />
+        <Setter Property="FontAttributes"
+                            Value="Bold" />
+        <Setter Property="HorizontalOptions"
+                            Value="Center" />
+        <Setter Property="Padding"
+                            Value="0,20,0,20" />
+    </Style>
+
+    <Style x:Key="SubTitleLabel" TargetType="Label">
+        <Setter Property="TextColor"
+                            Value="ForestGreen" />
+        <Setter Property="FontSize"
+                            Value="Subtitle" />
+        <Setter Property="HorizontalOptions"
+                            Value="Center" />
+        <Setter Property="Padding"
+                            Value="0,0,0,20" />
+        <Setter Property="FontFamily"
+                            Value="San-Serif" />
+    </Style>
+
+    <!--end Labels-->
+
+    <!--start entry-->
+    <Style x:Key="InvalidStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="Red" />
+    </Style>
+
+
+    <!--end entry-->
+    
+    <!-- start button-->
+    <Style x:Key="InvalidClick" TargetType="Button">
+        <Setter Property="TextColor" Value="Yellow"/>
+    </Style>
+
+    <Style x:Key="entranceButton" TargetType="Button">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="CornerRadius" Value="40"/>
+        <Setter Property="BackgroundColor" Value="Green"/>
+        <Setter Property="Margin" Value="30,10,30,10"/>
+        <Setter Property="HeightRequest" Value="50"/>
+    </Style>
+    
+    <!--start checkbox-->
+    <Style x:Key="InvalidCheck" TargetType="CheckBox">
+        <Setter Property="Color"
+                            Value="Red" />
+    </Style>
+
+    <Style x:Key="TandCBox" TargetType="CheckBox">
+        <Setter Property="IsEnabled"
+                            Value="True" />
+       
+        <Setter Property="HorizontalOptions"
+                            Value="Center" />
+        <Setter Property="Margin"
+                            Value="30,5,0,0" />
+
+       
+  
+    </Style>
+
+    <!--end checkbox-->
+
+    <!--start image-->
+    <Style x:Key="TitleImage" TargetType="Image">
+        <Setter Property="WidthRequest"
+                            Value="100" />
+        <Setter Property="HeightRequest"
+                            Value="50" />
+        <Setter Property="HorizontalOptions"
+                            Value="Center" />
+
+    </Style>
+    <!--end image-->
+</ResourceDictionary>

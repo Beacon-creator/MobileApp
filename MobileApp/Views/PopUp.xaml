@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+            xmlns:views="clr-namespace:MobileApp.Views"
+            x:DataType="views:PopUp"
+            x:Class="MobileApp.Views.PopUp"
+             Size="300,300">
+   
+        <StackLayout>
+            <Label Text="Popup"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+           
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <Button Text="Ok"
+                         Clicked="Dismiss_Popup"                              
+                        Margin="5"
+                        />
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+   
+         
+   
+</xct:Popup>
+

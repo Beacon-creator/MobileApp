@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         mc:Ignorable="d"
+         xmlns:local="clr-namespace:MobileApp.EventHandlers"
+         x:Class="MobileApp.Views.SignupPage"
+         xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+         xmlns:viewsmodels="clr-namespace:MobileApp.ViewsModels" 
+             xmlns:local2="clr-namespace:MobileApp.MyControls">
+
+
+    <StackLayout BackgroundColor="LightGray" >
+
+        <Label Text="Login" x:Name="Signim"
+               Style="{DynamicResource SigninupLabel}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Login_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Text="Create your account" Style="{DynamicResource Titlelabel}"/>
+
+        <Image Source="logopic.png" Style="{DynamicResource TitleImage}" />
+        
+        <Label Text="Mobile login, Trending!" Style="{DynamicResource SubTitleLabel}"/>
+
+        <local2:MyRoundedEntry  HeightRequest="70"
+                                HorizontalTextAlignment="Start"
+                                Placeholder="Username"  Margin ="30,0,30,10" 
+                                x:Name="EntryUsername"  HorizontalOptions="Fill" />
+
+        <local2:MyRoundedEntry HeightRequest="70"
+                                HorizontalTextAlignment="Start"
+                                Placeholder="Email"  Margin ="30,0,30,0"
+                                x:Name="EntryEmail" HorizontalOptions="Fill" >
+                <Entry.Behaviors>
+                <xct:EmailValidationBehavior
+                               DecorationFlags="Trim"
+                               InvalidStyle="{DynamicResource InvalidStyle}"                         
+                                RegexOptions="IgnoreCase, Singleline"/>
+            </Entry.Behaviors>
+        </local2:MyRoundedEntry>
+        
+        <Label x:Name="ErrorEmail" 
+               FontSize="Micro"
+               ></Label>
+
+        <Grid>
+            <local2:MyRoundedEntry HeightRequest="70"
+                                HorizontalTextAlignment="Start"
+                                Placeholder="Password"   Margin ="30,0,30,0" 
+                                x:Name="EntryPassword"  HorizontalOptions="Fill"
+                                IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}">
+
+                <Entry.Behaviors>
+                    <xct:CharactersValidationBehavior
+                       InvalidStyle="{DynamicResource InvalidStyle}"
+                      CharacterType="Alphanumeric"
+                      MinimumCharacterCount="4"
+                />
+                </Entry.Behaviors>
+
+
+            </local2:MyRoundedEntry>
+            
+            <ImageButton VerticalOptions="Center"
+                      Margin="0,0,50,0" Grid.Column="0"
+                     HeightRequest="20"
+                     HorizontalOptions="End"
+                     Source="ic_eye_hide">
+
+                <ImageButton.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <local:ShowPasswordTriggerActions ShowIcon="ic_eye"
+                                                          HideIcon="ic_eye_hide"
+                                                          x:Name="ShowPasswordActualTrigger"/>
+                    </EventTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+
+        </Grid>
+
+
+        <Button Text="Join Us" Style="{DynamicResource entranceButton}"              
+                Clicked="JoinusButton_Clicked" />
+
+        <Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <CheckBox  
+                    x:Name="TermsAccepted" Style="{DynamicResource TandCBox}"
+                    CheckedChanged="TermsAccepted_CheckedChanged">
+                    
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Color"
+                                Value="Red" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="IsChecked">
+                                <VisualState.Setters>
+                                    <Setter Property="Color"
+                                Value="Green" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </CheckBox>
+
+                <Label x:Name="termsLabel"   Margin="0,10,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="I agree to accept all the "/>
+                                <Span Text="terms and conditions " 
+                                                    x:Name="Terms_Rules" 
+                                                  FontAttributes="Italic" FontSize="15">
+                                </Span>
+
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding Source={x:Reference TermsAccepted}, Path=IsChecked}"
+                                     Value="true">
+                            <Setter Property="TextColor"
+                                    Value="Blue"/>
+                            <Setter Property="FontAttributes"
+                                    Value="Italic, Bold" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Rules_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="MobileApp.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="InvalidStyle"     TargetType="Entry">
+
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="20,35,20,20">
+        <Entry x:Name="nameEntry"
+               Placeholder="Enter name"/>
+        <CheckBox x:Name="subscribed" />
+        <Button Text="Add to Database"
+                 />
+
+        <Entry>
+            <Entry.Behaviors>
+                <xct:UriValidationBehavior UriKind="Absolute"
+                     InvalidStyle="{StaticResource InvalidStyle}" 
+                                            />
+            </Entry.Behaviors>
+        </Entry>
+        <Entry>
+            <Entry.Behaviors>
+                <xct:RequiredStringValidationBehavior RequiredString="Subscribe Now"
+                     InvalidStyle="{StaticResource InvalidStyle}"  />
+            </Entry.Behaviors>
+        </Entry>
+        <Entry>
+            <Entry.Behaviors>
+                <xct:MultiValidationBehavior
+                     InvalidStyle="{StaticResource InvalidStyle}" >
+                    <xct:UriValidationBehavior UriKind="Absolute"
+                     InvalidStyle="{StaticResource InvalidStyle}"/>
+
+                    <xct:RequiredStringValidationBehavior
+                       RequiredString="Subscribe Now"
+                     InvalidStyle="{StaticResource InvalidStyle}"
+                       xct:MultiValidationBehavior.Error="Type Subscribe Now" />
+
+
+                </xct:MultiValidationBehavior>
+
+            </Entry.Behaviors>
+        </Entry>
+
+
+        <CollectionView x:Name="collectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Name}"
+                               FontSize="Medium" />
+                        <Label Text="{Binding Subscribed}"
+                               TextColor="Silver"
+                               FontSize="Small"  />
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+
+</ContentPage>
